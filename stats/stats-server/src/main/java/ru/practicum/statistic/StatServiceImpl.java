@@ -28,15 +28,16 @@ public class StatServiceImpl implements StatService {
         Hit newHit = HitMapper.toHit(endpointHit);
         statRepository.save(newHit);
     }
+
     @Override
     public List<ViewStats> getStats(String start, String end, List<String> uris, Boolean unique) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String encodedStart = URLDecoder.decode(start, StandardCharsets.UTF_8);
         String encodedEnd = URLDecoder.decode(end, StandardCharsets.UTF_8);
         List<ViewStats> viewStats;
-        if(unique) {
+        if (unique) {
             viewStats = statRepository.findDistinctByUriAndTimestamp(uris, LocalDateTime.parse(encodedStart, formatter),
-                LocalDateTime.parse(encodedEnd, formatter));
+                    LocalDateTime.parse(encodedEnd, formatter));
         } else {
             viewStats = statRepository.findByUriAndTimestamp(uris, LocalDateTime.parse(encodedStart, formatter),
                     LocalDateTime.parse(encodedEnd, formatter));
