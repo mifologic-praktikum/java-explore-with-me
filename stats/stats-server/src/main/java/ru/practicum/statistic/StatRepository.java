@@ -21,9 +21,4 @@ public interface StatRepository extends JpaRepository<Hit, Long> {
             "GROUP BY h.uri, h.app")
     List<ViewStats> findByUriAndTimestamp(@Param("uris") List<String> uris, @Param("start") LocalDateTime start, @Param("end") LocalDateTime end);
 
-//    @Query(value = "SELECT COUNT (ip) FROM Hit WHERE uri = ?1")
-//    Integer findHitCountByUri(String uri);
-//
-//    @Query(value = "SELECT COUNT (distinct ip) FROM Hit WHERE uri = ?1")
-//    Integer findHitCountByUriWithUniqueIp(String uri);
 }

@@ -9,9 +9,9 @@ import lombok.Setter;
 @AllArgsConstructor
 public class EndpointHit {
 
-    Long id;
-    String app;
-    String uri;
-    String ip;
-    String timestamp;
+    private Long id;
+    private String app;
+    private String uri;
+    private String ip;
+    private String timestamp;
 }
