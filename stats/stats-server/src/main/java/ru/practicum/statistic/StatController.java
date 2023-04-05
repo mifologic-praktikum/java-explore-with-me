@@ -19,8 +19,8 @@ public class StatController {
     }
 
     @GetMapping("/stats")
-    public List<ViewStats> getStats(@RequestParam(name = "start") String start,
-                                    @RequestParam(name = "end") String end,
+    public List<ViewStats> getStats(@RequestParam(name = "start", required = false) String start,
+                                    @RequestParam(name = "end", required = false) String end,
                                     @RequestParam(name = "uris", required = false) List<String> uris,
                                     @RequestParam(name = "unique", defaultValue = "false") Boolean unique) {
         log.info("Get visiting statistic");

@@ -1,12 +1,13 @@
 package ru.practicum.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class ViewStats {
 
     private String app;
