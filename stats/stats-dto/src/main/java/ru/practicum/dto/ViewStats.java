@@ -1,6 +1,5 @@
 package ru.practicum.dto;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import lombok.*;
 
 @Getter
