@@ -5,7 +5,9 @@ import ru.practicum.ewm.event.enumerate.EventState;
 import ru.practicum.ewm.request.ParticipationRequestDto;
 import ru.practicum.ewm.request.model.EventRequestStatusUpd;
 import ru.practicum.ewm.request.model.EventRequestStatusUpdResult;
+import ru.practicum.stats.StatClient;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface EventService {
@@ -20,9 +22,9 @@ public interface EventService {
 
     EventFullDto adminUpdateEventInfo(Long eventId, AdminUpdateEventDto adminUpdateEventDto);
 
-    List<EventShortDto> getSuitableEventsList(String text, List<Long> categories, Boolean paid, String rangeStart, String rangeEnd, Boolean onlyAvailable, String sort, int from, int size, String url);
+    List<EventShortDto> getSuitableEventsList(String text, List<Long> categories, Boolean paid, String rangeStart, String rangeEnd, Boolean onlyAvailable, String sort, int from, int size, StatClient statClient, HttpServletRequest request);
 
-    EventFullDto getEventInfo(Long eventId, String url);
+    EventFullDto getEventInfo(Long eventId, StatClient statClient, String url);
 
     public List<EventShortDto> getAllEventsAddedByUser(Long userId, int from, int size);
 

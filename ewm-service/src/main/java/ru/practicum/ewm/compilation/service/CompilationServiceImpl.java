@@ -16,12 +16,13 @@ import ru.practicum.ewm.exception.NotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CompilationServiceImpl implements CompilationService {
 
-    CompilationRepository compilationRepository;
-    EventRepository eventRepository;
+    private final CompilationRepository compilationRepository;
+    private final EventRepository eventRepository;
 
     public CompilationServiceImpl(CompilationRepository compilationRepository, EventRepository eventRepository) {
         this.compilationRepository = compilationRepository;
@@ -66,20 +67,14 @@ public class CompilationServiceImpl implements CompilationService {
         if (updateCompilationDto.getPinned() != null) {
             compilation.setPinned(updateCompilationDto.getPinned());
         }
-
         return CompilationMapper.toCompilationDto(compilationRepository.save(compilation));
     }
 
     @Override
     public List<CompilationDto> getCompilationsList(Boolean pinned, int from, int size) {
-        List<CompilationDto> compilationDtos = new ArrayList<>();
-
         Pageable pageable = PageRequest.of((from / size), size);
         List<Compilation> compilations = compilationRepository.findAllByPinned(pinned, pageable);
-        for (Compilation compilation : compilations) {
-            compilationDtos.add(CompilationMapper.toCompilationDto(compilation));
-        }
-        return compilationDtos;
+        return compilations.stream().map(CompilationMapper::toCompilationDto).collect(Collectors.toList());
     }
 
     @Override

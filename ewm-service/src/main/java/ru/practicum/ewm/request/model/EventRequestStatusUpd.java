@@ -15,5 +15,5 @@ import java.util.List;
 public class EventRequestStatusUpd {
 
     private List<Long> requestIds;
-    ParticipationRequestStatus status;
+    private ParticipationRequestStatus status;
 }

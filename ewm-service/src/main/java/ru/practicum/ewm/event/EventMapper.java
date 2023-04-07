@@ -7,7 +7,6 @@ import ru.practicum.ewm.event.dto.EventShortDto;
 import ru.practicum.ewm.event.dto.NewEventDto;
 import ru.practicum.ewm.event.location.Location;
 import ru.practicum.ewm.user.User;
-import ru.practicum.stats.StatClient;
 
 import java.time.LocalDateTime;
 
@@ -36,17 +35,6 @@ public class EventMapper {
     }
 
     public static EventShortDto toShortDto(Event event) {
-//        return new EventShortDto(
-//                event.getId(),
-//                event.getTitle(),
-//                event.getAnnotation(),
-//                new EventShortDto.Category(event.getCategory().getId(), event.getCategory().getName()),
-//                DataFormatter.fromDateToString(event.getEventDate()),
-//                event.getPaid(),
-//                new EventShortDto.User(event.getInitiator().getId(), event.getInitiator().getName()),
-//                event.getConfirmedRequests(),
-//                event.getViews()
-//        );
         return EventShortDto.builder()
                 .id(event.getId())
                 .title(event.getTitle())

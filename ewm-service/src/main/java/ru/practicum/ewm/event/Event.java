@@ -50,5 +50,5 @@ public class Event {
     private LocalDateTime publishedOn;
     @Column(name = "request_moderation")
     private Boolean requestModeration;
-    private int views;
+    private Long views;
 }

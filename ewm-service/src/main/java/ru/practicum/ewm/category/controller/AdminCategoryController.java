@@ -3,8 +3,8 @@ package ru.practicum.ewm.category.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.ewm.category.service.CategoryService;
 import ru.practicum.ewm.category.dto.CategoryDto;
+import ru.practicum.ewm.category.service.CategoryService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;

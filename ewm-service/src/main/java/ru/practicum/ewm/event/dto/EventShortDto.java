@@ -26,7 +26,7 @@ public class EventShortDto {
     @NotBlank
     private User initiator;
     private int confirmedRequests;
-    private int views;
+    private Long views;
 
     @Getter
     @Setter

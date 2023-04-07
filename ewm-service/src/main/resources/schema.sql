@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS EVENTS
     participant_limit  INTEGER,
     published_on       TIMESTAMP,
     request_moderation BOOLEAN,
-    views              INTEGER,
+    views              BIGINT,
     CONSTRAINT pk_events PRIMARY KEY (id),
     CONSTRAINT fk_events_user_id FOREIGN KEY (initiator_id) REFERENCES USERS (id) ON DELETE CASCADE,
     CONSTRAINT fk_events_category_id FOREIGN KEY (category_id) REFERENCES CATEGORIES (id) ON DELETE CASCADE,

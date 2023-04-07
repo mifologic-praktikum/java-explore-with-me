@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("/users")
 public class EventPrivateController {
 
-    EventService eventService;
+    private final EventService eventService;
 
     public EventPrivateController(EventService eventService) {
         this.eventService = eventService;

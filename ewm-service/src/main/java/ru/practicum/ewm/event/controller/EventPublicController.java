@@ -34,7 +34,7 @@ public class EventPublicController {
 
     @GetMapping
     public List<EventShortDto> getSuitableEventsList(@RequestParam(required = false) String text,
-                                                     @RequestParam(required = false) List<Long> categories,
+                                                     @RequestParam(required = false, defaultValue = "0") List<Long> categories,
                                                      @RequestParam(required = false) Boolean paid,
                                                      @RequestParam(required = false) String rangeStart,
                                                      @RequestParam(required = false) String rangeEnd,
@@ -44,16 +44,8 @@ public class EventPublicController {
                                                      @RequestParam(required = false, defaultValue = "10") int size,
                                                      HttpServletRequest request) {
         log.info("Get info events list that matches the conditions");
-        List<EventShortDto> suitableEventsList = eventService.getSuitableEventsList(text, categories, paid, rangeStart, rangeEnd, onlyAvailable, sort, from, size, request.getRequestURI());
-        statClient.createHit(
-                new EndpointHit(
-                        0L,
-                        appName,
-                        request.getRequestURI(),
-                        request.getRemoteAddr(),
-                        DataFormatter.fromDateToString(LocalDateTime.now()))
-        );
-        return suitableEventsList;
+
+       return eventService.getSuitableEventsList(text, categories, paid, rangeStart, rangeEnd, onlyAvailable, sort, from, size, statClient, request);
     }
 
     @GetMapping("/{eventId}")
@@ -62,11 +54,11 @@ public class EventPublicController {
         statClient.createHit(
                 new EndpointHit(
                         0L,
-                        "ewm",
+                        appName,
                         request.getRequestURI(),
                         request.getRemoteAddr(),
                         DataFormatter.fromDateToString(LocalDateTime.now()))
         );
-        return eventService.getEventInfo(eventId, request.getRequestURI());
+        return eventService.getEventInfo(eventId, statClient, request.getRequestURI());
     }
 }

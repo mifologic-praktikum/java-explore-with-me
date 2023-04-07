@@ -10,16 +10,16 @@ import ru.practicum.ewm.event.enumerate.EventStateAction;
 @ToString
 public class UpdateUserEventDto {
 
-    String annotation;
-    Long category;
-    String description;
-    String eventDate;
-    AdminUpdateEventDto.Location location;
-    Boolean paid;
-    int participantLimit;
-    Boolean requestModeration;
-    EventStateAction stateAction;
-    String title;
+    private String annotation;
+    private Long category;
+    private String description;
+    private String eventDate;
+    private AdminUpdateEventDto.Location location;
+    private Boolean paid;
+    private int participantLimit;
+    private Boolean requestModeration;
+    private EventStateAction stateAction;
+    private String title;
 
     @Getter
     @Setter
@@ -27,7 +27,7 @@ public class UpdateUserEventDto {
     @NoArgsConstructor
     @ToString
     public static class Location {
-        float lat;
-        float lon;
+        private float lat;
+        private float lon;
     }
 }

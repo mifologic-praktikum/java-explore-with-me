@@ -33,7 +33,7 @@ public class EventFullDto {
     private Boolean requestModeration;
     private int confirmedRequests;
     private String publishedOn;
-    private int views;
+    private Long views;
 
     @Getter
     @Setter
@@ -41,9 +41,9 @@ public class EventFullDto {
     @NoArgsConstructor
     @ToString
     public static class Category {
-        Long id;
+        private Long id;
         @NotBlank
-        String name;
+        private String name;
     }
 
     @Getter
@@ -64,7 +64,7 @@ public class EventFullDto {
     @NoArgsConstructor
     @ToString
     public static class Location {
-        float lat;
-        float lon;
+        private float lat;
+        private float lon;
     }
 }

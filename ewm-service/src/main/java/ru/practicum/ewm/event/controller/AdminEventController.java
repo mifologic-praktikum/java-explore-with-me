@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping(path = "/admin/events")
 public class AdminEventController {
 
-    EventService eventService;
+    private final EventService eventService;
 
     public AdminEventController(EventService eventService) {
         this.eventService = eventService;
@@ -24,12 +24,12 @@ public class AdminEventController {
 
     @GetMapping
     public List<EventFullDto> findAllSuitableEvents(@RequestParam(required = false) List<Long> users,
-                                            @RequestParam(required = false) List<EventState> states,
-                                            @RequestParam(required = false) List<Long> categories,
-                                            @RequestParam(required = false) String rangeStart,
-                                            @RequestParam(required = false) String rangeEnd,
-                                            @RequestParam(required = false, defaultValue = "0") int from,
-                                            @RequestParam(required = false, defaultValue = "10") int size) {
+                                                    @RequestParam(required = false) List<EventState> states,
+                                                    @RequestParam(required = false) List<Long> categories,
+                                                    @RequestParam(required = false) String rangeStart,
+                                                    @RequestParam(required = false) String rangeEnd,
+                                                    @RequestParam(required = false, defaultValue = "0") int from,
+                                                    @RequestParam(required = false, defaultValue = "10") int size) {
         log.info("Find info about all events that match the conditions");
         return eventService.findAllSuitableEventsByAdmin(users, states, categories, rangeStart, rangeEnd, from, size);
     }

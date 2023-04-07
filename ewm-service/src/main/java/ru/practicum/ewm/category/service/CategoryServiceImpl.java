@@ -20,8 +20,8 @@ import java.util.List;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
-    CategoryRepository categoryRepository;
-    EventRepository eventRepository;
+    private final CategoryRepository categoryRepository;
+    private final EventRepository eventRepository;
 
     public CategoryServiceImpl(CategoryRepository categoryRepository, EventRepository eventRepository) {
         this.categoryRepository = categoryRepository;
