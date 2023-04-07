@@ -2,7 +2,7 @@ package ru.practicum.ewm.event.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.ewm.event.dto.AdminUpdateEventDto;
+import ru.practicum.ewm.event.dto.UpdateEventDto;
 import ru.practicum.ewm.event.dto.EventFullDto;
 import ru.practicum.ewm.event.enumerate.EventState;
 import ru.practicum.ewm.event.service.EventService;
@@ -36,8 +36,8 @@ public class AdminEventController {
 
     @PatchMapping("/{eventId}")
     public EventFullDto updateEventInfo(@PathVariable Long eventId,
-                                        @RequestBody AdminUpdateEventDto adminUpdateEventDto) {
+                                        @RequestBody UpdateEventDto updateEventDto) {
         log.info("Update info about event with id = " + eventId);
-        return eventService.adminUpdateEventInfo(eventId, adminUpdateEventDto);
+        return eventService.adminUpdateEventInfo(eventId, updateEventDto);
     }
 }

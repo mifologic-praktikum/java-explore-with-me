@@ -11,9 +11,6 @@ public class DataFormatter {
 
     public static LocalDateTime fromStringToDate(String date) {
         DateTimeFormatter formatter = getFormatter();
-        if (date == null) {
-            return LocalDateTime.now().minusYears(10);
-        }
         return LocalDateTime.parse(date, formatter);
     }
 

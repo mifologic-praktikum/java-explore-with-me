@@ -20,7 +20,7 @@ public interface EventService {
                                                     int from,
                                                     int size);
 
-    EventFullDto adminUpdateEventInfo(Long eventId, AdminUpdateEventDto adminUpdateEventDto);
+    EventFullDto adminUpdateEventInfo(Long eventId, UpdateEventDto updateEventDto);
 
     List<EventShortDto> getSuitableEventsList(String text, List<Long> categories, Boolean paid, String rangeStart, String rangeEnd, Boolean onlyAvailable, String sort, int from, int size, StatClient statClient, HttpServletRequest request);
 
@@ -32,7 +32,7 @@ public interface EventService {
 
     EventFullDto getAllInfoAboutEventAddedByUser(Long userId, Long eventId);
 
-    EventFullDto updateEventAddedByCurrentUser(Long userId, Long eventId, UpdateUserEventDto eventDto);
+    EventFullDto updateEventAddedByCurrentUser(Long userId, Long eventId, UpdateEventDto updateEventDto);
 
     List<ParticipationRequestDto> getInfoAboutRequestsInUserEvent(Long userId, Long eventId);
 

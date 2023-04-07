@@ -14,7 +14,7 @@ public class UpdateUserEventDto {
     private Long category;
     private String description;
     private String eventDate;
-    private AdminUpdateEventDto.Location location;
+    private UpdateEventDto.Location location;
     private Boolean paid;
     private int participantLimit;
     private Boolean requestModeration;

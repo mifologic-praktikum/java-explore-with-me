@@ -7,7 +7,7 @@ import ru.practicum.ewm.event.enumerate.EventStateAction;
 @Setter
 @AllArgsConstructor
 @ToString
-public class AdminUpdateEventDto {
+public class UpdateEventDto {
 
     private String annotation;
     private Long category;
