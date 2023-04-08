@@ -20,7 +20,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     @Query(value = "SELECT e FROM  Event as e " +
             "WHERE (:users is null or e.initiator.id in (:users)) " +
             "AND (:states is null or e.state in (:states)) " +
-            "AND (:categories is null or e.category.id in (:categories)) " +
+            "AND ((:categories) is null or e.category.id in (:categories)) " +
             "AND e.eventDate between :rangeStart AND :rangeEnd")
     List<Event> findAllByAdmin(@Param("users") List<Long> users, @Param("states") List<EventState> states,
                                @Param("categories") List<Long> categories, @Param("rangeStart") LocalDateTime rangeStart,
@@ -31,7 +31,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
             value = "SELECT e FROM Event as e " +
                     "WHERE (:text is null or lower(e.annotation) like concat('%', lower(:text), '%') " +
                     "OR (:text is null or lower(e.description) like concat('%', lower(:text), '%'))) " +
-                    "AND e.category.id in (:categories) " +
+                    "AND ((:categories) is null or e.category.id in (:categories))" +
                     "AND e.paid = (:paid) " +
                     "AND e.eventDate between :rangeStart AND :rangeEnd and e.state = 'PUBLISHED'"
     )
