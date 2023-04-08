@@ -59,6 +59,7 @@ public class EventPublicController {
                         request.getRemoteAddr(),
                         DataFormatter.fromDateToString(LocalDateTime.now()))
         );
+        log.info("Create hit for url=" + request.getRequestURI());
         return eventService.getEventInfo(eventId, statClient, request.getRequestURI());
     }
 }

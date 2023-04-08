@@ -1,5 +1,6 @@
 package ru.practicum.stats;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -18,6 +19,7 @@ import java.util.Map;
 import static org.springframework.http.HttpMethod.GET;
 
 @Service
+@Slf4j
 public class StatClient {
 
     String serverUrl;
@@ -30,13 +32,14 @@ public class StatClient {
         this.rest = builder.build();
     }
 
-    public List<ViewStats> getStats(String start, String end, String uris) {
+    public List<ViewStats> getStats(String start, String end, List<String> uris) {
         Map<String, Object> parameters = Map.of(
                 "start", start,
                 "end", end,
                 "uris", uris,
                 "unique", false
         );
+        log.info("[STATS_CLIENT]: get info for uris=" + uris);
         ResponseEntity<List<ViewStats>> response = rest
                 .exchange(serverUrl + "/stats?start={start}&end={end}&uris={uris}&unique={unique}",
                         GET, null, new ParameterizedTypeReference<>() {

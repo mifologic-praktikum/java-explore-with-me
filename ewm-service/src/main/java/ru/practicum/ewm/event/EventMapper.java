@@ -1,12 +1,9 @@
 package ru.practicum.ewm.event;
 
 import ru.practicum.ewm.DataFormatter;
-import ru.practicum.ewm.category.Category;
 import ru.practicum.ewm.event.dto.EventFullDto;
 import ru.practicum.ewm.event.dto.EventShortDto;
 import ru.practicum.ewm.event.dto.NewEventDto;
-import ru.practicum.ewm.event.location.Location;
-import ru.practicum.ewm.user.User;
 
 import java.time.LocalDateTime;
 
@@ -59,28 +56,5 @@ public class EventMapper {
                 .requestModeration(newEventDto.getRequestModeration())
                 .publishedOn(LocalDateTime.now())
                 .build();
-
-
-    }
-
-    public static Event toEvent(EventFullDto eventDto, Category category, User user, Location location) {
-        return new Event(
-                eventDto.getId(),
-                eventDto.getTitle(),
-                eventDto.getAnnotation(),
-                eventDto.getDescription(),
-                category,
-                DataFormatter.fromStringToDate(eventDto.getEventDate()),
-                eventDto.getState(),
-                eventDto.getConfirmedRequests(),
-                DataFormatter.fromStringToDate(eventDto.getCreatedOn()),
-                user,
-                location,
-                eventDto.getPaid(),
-                eventDto.getParticipantLimit(),
-                DataFormatter.fromStringToDate(eventDto.getPublishedOn()),
-                eventDto.getRequestModeration(),
-                eventDto.getViews()
-        );
     }
 }

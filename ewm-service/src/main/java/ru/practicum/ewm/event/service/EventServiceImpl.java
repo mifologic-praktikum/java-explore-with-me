@@ -129,8 +129,10 @@ public class EventServiceImpl implements EventService {
         Pageable pageable;
         if (sort == null) {
             pageable = PageRequest.of((from / size), size);
+        } else if (Objects.equals(sort, "EVENT_DATE")) {
+            pageable = PageRequest.of((from / size), size, Sort.by("eventDate"));
         } else {
-            pageable = PageRequest.of((from / size), size, Sort.by(sort));
+            pageable = PageRequest.of((from / size), size, Sort.by("views"));
         }
         if (rangeStart == null) {
             rangeStart = DataFormatter.fromDateToString(LocalDateTime.now());
