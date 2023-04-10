@@ -23,7 +23,7 @@ public class StatController {
                                     @RequestParam(name = "end") String end,
                                     @RequestParam(name = "uris", required = false) List<String> uris,
                                     @RequestParam(name = "unique", defaultValue = "false") Boolean unique) {
-        log.info("Get visiting statistic");
+        log.info("Get visiting statistic for data: start=" + start + " end=" + end + " uris=" + uris);
         return statService.getStats(start, end, uris, unique);
     }
 

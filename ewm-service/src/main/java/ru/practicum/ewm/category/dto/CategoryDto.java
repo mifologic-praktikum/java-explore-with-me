@@ -1,19 +1,20 @@
-package ru.practicum.dto;
+package ru.practicum.ewm.category.dto;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.validation.constraints.NotBlank;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @ToString
-public class EndpointHit {
+public class CategoryDto {
 
     private Long id;
-    private String app;
-    private String uri;
-    private String ip;
-    private String timestamp;
+    @NotBlank
+    private String name;
 }
