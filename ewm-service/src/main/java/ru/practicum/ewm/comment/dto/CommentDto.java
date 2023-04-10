@@ -4,7 +4,6 @@ import lombok.*;
 import ru.practicum.ewm.comment.CommentState;
 
 import javax.validation.constraints.NotBlank;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter

@@ -3,8 +3,6 @@ package ru.practicum.ewm.comment.dto;
 import lombok.*;
 import ru.practicum.ewm.comment.CommentState;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @Builder

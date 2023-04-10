@@ -115,7 +115,7 @@ public class CommentServiceImpl implements CommentService {
         userRepository.findById(userId).orElseThrow(
                 () -> new NotFoundException("User with id = " + userId + " not found")
         );
-         eventRepository.findById(eventId).orElseThrow(
+        eventRepository.findById(eventId).orElseThrow(
                 () -> new NotFoundException("Event with id = " + eventId + " not found"));
         List<Comment> comments = commentRepository.findAllByEventId(eventId);
         return comments.stream().map(CommentMapper::toCommentDto).collect(Collectors.toList());
