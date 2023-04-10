@@ -28,5 +28,6 @@ public class ParticipationRequest {
     @ManyToOne
     @JoinColumn(name = "requester_id")
     private User requester;
+    @Column(length = 10)
     private ParticipationRequestStatus status;
 }

@@ -23,8 +23,11 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(length = 120, nullable = false)
     private String title;
+    @Column(length = 2000, nullable = false)
     private String annotation;
+    @Column(length = 7000)
     private String description;
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -32,6 +35,7 @@ public class Event {
     @Column(name = "event_date")
     private LocalDateTime eventDate;
     @Enumerated(EnumType.STRING)
+    @Column(length = 10)
     private EventState state;
     @Column(name = "confirmed_requests")
     private int confirmedRequests;
